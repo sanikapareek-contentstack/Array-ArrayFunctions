@@ -159,5 +159,12 @@ const employees = [
 
   console.log("Updated employee details:",updateEmployeeById("1",{"name":"Siddhi Kale"}));
 
-  
+  function deleteEmployeeById(id){
+    let index=employees_arr.findIndex((ele)=>ele.id===id);
+    console.log("Index:",index)
+    employees_arr.splice(index,1)
+    return employees_arr;
+  }
+
+  console.log("Employee array after deleting an element by id:",deleteEmployeeById("7"))
   
