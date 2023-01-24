@@ -125,3 +125,11 @@ const employees = [
   }
 
   console.log(employees_arr)
+
+  function findEmployeeById(id){
+    const empById=employees_arr.find((ele)=>ele.id===id);
+    return empById;
+  }
+
+  console.log(findEmployeeById("9"));
+  
