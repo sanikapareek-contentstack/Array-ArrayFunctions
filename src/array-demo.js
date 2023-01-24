@@ -130,6 +130,17 @@ const employees = [
     const empById=employees_arr.find((ele)=>ele.id===id);
     return empById;
   }
+ 
+  const obj1={"name":"Sanika","age":"21"}
+  console.log(Object.keys(obj1).length)
+  function findEmployee(search_obj){
+    const emp=employees_arr.find((ele)=>{
+        const key=Object.keys(search_obj)[0]
+        return ele[key]===Object.values(search_obj)[0]
+    });
+    return emp;
+  }
 
-  console.log(findEmployeeById("9"));
+  console.log(findEmployee({"name":"Sanika Pareek"}));
+  console.log(findEmployee({"id":"1"}));
   
