@@ -131,6 +131,7 @@ const employees = [
     return empById;
   }
  
+  //for search object with single key-value pair 
   function findEmployee(searchObject){
     const emp=employees_arr.find((ele)=>{
         const key=Object.keys(searchObject)[0]
@@ -138,19 +139,28 @@ const employees = [
     });
     return emp;
   }
-
-  function findEmployee(searchObject){
-    const emp=employees_arr.find((ele)=>{
-        const key=Object.keys(searchObject)[0]
-        return ele[key]===Object.values(searchObject)[0]
-    });
-    return emp;
-  }
-  
 
   console.log("Finding employee by name:",findEmployee({"name":"Sanika Pareek"}));
   console.log("Finding employee by id:",findEmployee({"id":"1"}));
 
+  //for search object with multiple key-value pair
+  function findEmployeeForMultipleKeyValuePair(searchObject){
+    let len=Object.keys(searchObject).length;
+    let emp=employees_arr.find((ele)=>{
+        const key=Object.keys(searchObject)[0]
+        return ele[key]===Object.values(searchObject)[0]
+    });
+    let emp_id=emp.id;
+    for(let i=1;i<len;i++){
+        emp=employees_arr.find((ele)=>{
+            const key=Object.keys(searchObject)[i]
+            return ele[key]===Object.values(searchObject)[i] && ele["id"]===emp_id
+        });
+    }
+    return emp;
+  }
+  console.log("Search object with multiple key-value pair:",findEmployeeForMultipleKeyValuePair({"name":"Sanika Pareek","introduction":"I'm curious to learn and explore new things and like to paint.","profileImage":"assets/images/sanika.jpeg"}))
+  
   function updateEmployeeById(id, updateObject){
     const emp=findEmployeeById(id);
     emp[(Object.keys(updateObject)[0])]=Object.values(updateObject)[0];
